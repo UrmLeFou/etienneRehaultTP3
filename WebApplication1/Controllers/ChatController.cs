@@ -9,17 +9,17 @@ namespace WebApplication1.Controllers
 {
     public class ChatController : Controller
     {
+        private static readonly List<Chat> chats = Chat.GetMeuteDeChats();
+
         // GET: Chat
         public ActionResult Index()
         {
-            var chats = Chat.GetMeuteDeChats();
             return View(chats);
         }
 
         // GET: Chat/Details/5
         public ActionResult Details(int id)
         {
-            var chats = Chat.GetMeuteDeChats();
             var chat = chats.SingleOrDefault(c => c.Id.Equals(id));
             return View(chat);
         }
@@ -27,7 +27,6 @@ namespace WebApplication1.Controllers
         // GET: Chat/Delete/5
         public ActionResult Delete(int id)
         {
-            var chats = Chat.GetMeuteDeChats();
             var chat = chats.SingleOrDefault(c => c.Id.Equals(id));
             return View(chat);
         }
@@ -38,7 +37,6 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                var chats = Chat.GetMeuteDeChats();
                 var chat = chats.SingleOrDefault(c => c.Id.Equals(id));
                 chats.Remove(chat);
                 return RedirectToAction("Index");
