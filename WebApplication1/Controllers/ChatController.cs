@@ -38,8 +38,9 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
+                var chats = Chat.GetMeuteDeChats();
+                var chat = chats.SingleOrDefault(c => c.Id.Equals(id));
+                chats.Remove(chat);
                 return RedirectToAction("Index");
             }
             catch
